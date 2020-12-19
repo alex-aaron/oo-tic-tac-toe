@@ -58,7 +58,6 @@ class TicTacToe
                 turn
             end
         end
-        binding.pry
         turn
     end 
 
@@ -85,7 +84,7 @@ class TicTacToe
 
     def won?
         WIN_COMBINATIONS.any? do |win_combo|
-            if self.position_taken?(win_combo[0]) == true && @board[win_combo[1]] == @board[win_combo[1]] && @board[win_combo[1]] == @board[win_combo[2]]
+            if self.position_taken?(win_combo[0]) == true && @board[win_combo[0]] == @board[win_combo[1]] && @board[win_combo[1]] == @board[win_combo[2]]
                 return win_combo
             end
         end
@@ -104,10 +103,7 @@ class TicTacToe
     end
 
     def over?
-        if self.won? == true || self.draw? == true
-            true
-        end
-        false
+        won? || draw?
     end
 
     def winner
@@ -133,17 +129,27 @@ class TicTacToe
         
     end
 
-    # def play 
-    #     self.turn until self.over? == true
-    
-    #     if self.won?.class == Array
-    #         winner = self.winner
-    #         puts "Congratulations #{winner}!"
-    #     elsif self.draw? == true
-    #         puts "Cat's Game!"
-    #     end
 
-    # end
+    def play         
+        self.turn until self.over?
+    
+        puts winner ? "Congratulations #{winner}!" : "Cat's Game!" 
+        
+        #until the game is over
+
+        #once game is over
+          #puts winner statement
+        #or
+          #puts cats game statement
+
+        # if self.won?
+        #     winner = self.winner
+        #     puts "Congratulations #{winner}!"
+        #  elsif self.draw?
+        #      puts "Cat's Game!"
+        # end
+
+    end
          
 
 
